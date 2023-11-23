@@ -3,16 +3,16 @@
 Companion codes for the lecture on Numpy
 """
 
-import numpy as np 
+import numpy as np
 import pandas as pd
 
 
 
-# ---------------------------------------------------------------------------- 
+# ----------------------------------------------------------------------------
 #   The dates and prices lists
-# ---------------------------------------------------------------------------- 
+# ----------------------------------------------------------------------------
 dates = [
-  '2020-01-02', 
+  '2020-01-02',
   '2020-01-03',
   '2020-01-06',
   '2020-01-07',
@@ -25,7 +25,7 @@ dates = [
   ]
 
 prices = [
-  7.1600, 
+  7.1600,
   7.1900,
   7.0000,
   7.1000,
@@ -50,9 +50,9 @@ bday = [
   9,
   10]
 
-# ---------------------------------------------------------------------------- 
+# ----------------------------------------------------------------------------
 #   Create two series
-# ---------------------------------------------------------------------------- 
+# ----------------------------------------------------------------------------
 
 # Series with prices
 prc_ser = pd.Series(data=prices, index=dates)
@@ -61,14 +61,18 @@ prc_ser = pd.Series(data=prices, index=dates)
 bday_ser = pd.Series(data=bday, index=dates)
 
 
-# ---------------------------------------------------------------------------- 
+# ----------------------------------------------------------------------------
 #   Create a dataframe
-# ---------------------------------------------------------------------------- 
+# ----------------------------------------------------------------------------
 # Data Frame with close and Bday columns
-df = pd.DataFrame({'Close': prc_ser, 'Bday': bday_ser}) 
-#print(df) 
+df = pd.DataFrame({'Close': prc_ser, 'Bday': bday_ser})
+print(df)
 
-#df.info() 
+# Print a concise summary of the object
+df.info()
+
+
+
 
 # Get the series containing "Close" prices
 ser = df['Close']
@@ -80,7 +84,7 @@ print(ser.array)
 print(type(ser.array))
 
 
-# The .values attribute will give you a numpy array 
+# The .values attribute will give you a numpy array
 # with the contents of the series
 print(ser.values)
 
@@ -88,7 +92,7 @@ print(ser.values)
 print(type(ser.values))
 
 # ----------------------------------------------------------------------------
-#   Working with missing data 
+#   Working with missing data
 # ----------------------------------------------------------------------------
 
 # Add an empty row to the `df` dataframe
@@ -103,14 +107,18 @@ print(df_nan)
 print("\nThis is the `df` dataframe:")
 print(df.info())
 
-print("\nThis is the `df_nan` dataframe:")  # Automatically change the data type
+print("\nThis is the `df_nan` dataframe:")
 print(df_nan.info())
+
+
+
 
 # Convert dtypes
 df_new = df_nan.convert_dtypes()
-print(df_new.info())  # To check the change
+print(df_new.info())
 
 print(df_new.loc['3000-01-01'])
+
 print(type(df_new.loc['3000-01-01', 'Bday']))
 
 
@@ -141,7 +149,7 @@ print('\nprint(df1) -->')
 print(df1)
 print('\ndf1.info() --> ')
 df1.info()
-#
+
 
 # A data frame with a datetime objs as index labels
 
@@ -151,9 +159,3 @@ print('\nprint(df2) -->')
 print(df2)
 print('\ndf2.info() --> ')
 df2.info()
-#
-
-
-
-
-
